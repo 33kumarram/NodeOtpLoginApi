@@ -100,7 +100,7 @@ NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js
 
 ## Usage
  
-1. send otp to your mail id: 
+1. Send OTP to your mail id: 
 
 
    End point = https://nodeotploginapi.onrender.com/sendotp
@@ -115,7 +115,7 @@ NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js
   
           }
 
-2. Validate otp
+2. Validate OTP:
 
    End point = https://nodeotploginapi.onrender.com/login
 
