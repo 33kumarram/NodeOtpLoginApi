@@ -118,6 +118,8 @@ const logIn = asyncHandler(async function (req, res) {
     let updated_user = await users.findByIdAndUpdate(user._id, {
       $inc: { wrong_attempts: 1 },
       wrong_otp_submitted_at:new Date()
+    },{
+      new:true // to get updated value
     });
     let chances_left = 5-updated_user.wrong_attempts
     res.status(400);
