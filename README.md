@@ -27,25 +27,8 @@
 
 ## Description
 
-  The NodeOtpLoginApi is a RESTful API that allows users to log in using OTP authentication. It provides endpoints for generating OTPs and verifying OTPs.
+The MERN Grocery Store Application is designed to efficiently manage product information. Within this application, users can input details about grocery items, such as their name, category, price, product image, and description. This information is then presented in a clear tabular format, complete with the relevant details and accompanying images, for easy reference.
   
-  
-  
-  Key Features:
-  
-      1. OTP will be valid for five minutes
-      
-      2. If a user submits five consecutive wrong OTPs, he/she will be blocked for one hour.
-      
-      3. User can't regenerate OTP within one minute of prvious OTP. 
-
-
-
-
-
-
-
-<p>Deployed website: <strong><a href="https://nodeotploginapi.onrender.com/">https://nodeotploginapi.onrender.com/</a></strong>
 
 
 
@@ -58,12 +41,12 @@
 
 1. Clone the repository:
 
-       git clone https://github.com/33kumarram/NodeOtpLoginApi.git
+       git clone https://github.com/33kumarram/grocerystorebackend.git
 
 
 2. Install dependencies:
 
-       cd NodeOtpLoginApi
+       cd grocerystorebackend
 
        npm install
 
@@ -74,11 +57,7 @@
 
         MONGODB_URI= your MongoDB connection string
 
-        JWT_SECRET=a secret key for JSON Web Token (JWT) encryption
-
-        EMAIL = Your Mail Id which you want to use for sending mails
-      
-        PASSWORD = Password generated for app from your google account
+        APP_URL= Server url to generate url for uploaded image
 
         PORT = Port on which you want to run the server
 
@@ -92,7 +71,7 @@
 
 
 
-NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js </li><li>Express js </li><li>MongoDB </li><li>Nodemailer</li><li>Jsonwebtoken</li></ul>
+GroceryStoreBackEnd is built with the following tools and libraries: <ul><li>Node js </li><li>Express js </li><li>MongoDB </li><li>Multer</li><li>Multer-Gridfs-Storage</li><li>Gridfs-stram</li></ul>
 
 
 
@@ -100,24 +79,10 @@ NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js
 
 ## Usage
  
-1. Send OTP to your mail id: 
+1. Add product detail: 
 
 
-   End point = https://nodeotploginapi.onrender.com/users/sendotp
-
-   Request Type = POST
-
-   Body = 
-   
-          {
-   
-            "email":<Your Mail Id>
-  
-          }
-
-2. Validate OTP:
-
-   End point = https://nodeotploginapi.onrender.com/users/login
+   End point = <ServerUrl>/store/addproduct
 
    Request Type = POST
 
@@ -125,11 +90,31 @@ NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js
    
           {
    
-            "email":<Your Mail Id>,
-  
-            "otp":<OTP sent to your Mail Id>
+            "name":<Product Name>
+
+            "category":<Product Category>
+
+            "price":<Price of Droduct>
+
+            "description":<Product Details>
+
+            "image":<Url of product image>
   
           }
+
+2. Get Products List:
+
+   End point = <ServerUrl>/store/products
+
+   Request Type = GET
+
+3. Upload Image:
+
+   End point = <ServerUrl>/files/uploadimage
+
+   Request Type = POST
+
+   Date : Append image as 'file' and image name as 'name' in FormData
 
 
 
