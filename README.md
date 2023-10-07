@@ -27,8 +27,25 @@
 
 ## Description
 
-The MERN Grocery Store Application is designed to efficiently manage product information. Within this application, users can input details about grocery items, such as their name, category, price, product image, and description. This information is then presented in a clear tabular format, complete with the relevant details and accompanying images, for easy reference.
+  The NodeOtpLoginApi is a RESTful API that allows users to log in using OTP authentication. It provides endpoints for generating OTPs and verifying OTPs.
   
+  
+  
+  Key Features:
+  
+      1. OTP will be valid for five minutes
+      
+      2. If a user submits five consecutive wrong OTPs, he/she will be blocked for one hour.
+      
+      3. User can't regenerate OTP within one minute of prvious OTP. 
+
+
+
+
+
+
+
+<p>Deployed website: <strong><a href="https://nodeotploginapi.onrender.com/">https://nodeotploginapi.onrender.com/</a></strong>
 
 
 
@@ -41,12 +58,12 @@ The MERN Grocery Store Application is designed to efficiently manage product inf
 
 1. Clone the repository:
 
-       git clone https://github.com/33kumarram/grocerystorebackend.git
+       git clone https://github.com/33kumarram/NodeOtpLoginApi.git
 
 
 2. Install dependencies:
 
-       cd grocerystorebackend
+       cd NodeOtpLoginApi
 
        npm install
 
@@ -57,7 +74,11 @@ The MERN Grocery Store Application is designed to efficiently manage product inf
 
         MONGODB_URI= your MongoDB connection string
 
-        APP_URL= Server url to generate url for uploaded image
+        JWT_SECRET=a secret key for JSON Web Token (JWT) encryption
+
+        EMAIL = Your Mail Id which you want to use for sending mails
+      
+        PASSWORD = Password generated for app from your google account
 
         PORT = Port on which you want to run the server
 
@@ -71,7 +92,7 @@ The MERN Grocery Store Application is designed to efficiently manage product inf
 
 
 
-GroceryStoreBackEnd is built with the following tools and libraries: <ul><li>Node js </li><li>Express js </li><li>MongoDB </li><li>Multer</li><li>Multer-Gridfs-Storage</li><li>Gridfs-stram</li></ul>
+NodeOtpLoginApi is built with the following tools and libraries: <ul><li>Node js </li><li>Express js </li><li>MongoDB </li><li>Nodemailer</li><li>Jsonwebtoken</li></ul>
 
 
 
@@ -79,10 +100,10 @@ GroceryStoreBackEnd is built with the following tools and libraries: <ul><li>Nod
 
 ## Usage
  
-1. Add product detail: 
+1. Send OTP to your mail id: 
 
 
-   End point = <ServerUrl>/store/addproduct
+   End point = https://nodeotploginapi.onrender.com/users/sendotp
 
    Request Type = POST
 
@@ -90,31 +111,25 @@ GroceryStoreBackEnd is built with the following tools and libraries: <ul><li>Nod
    
           {
    
-            "name":<Product Name>
-
-            "category":<Product Category>
-
-            "price":<Price of Droduct>
-
-            "description":<Product Details>
-
-            "image":<Url of product image>
+            "email":<Your Mail Id>
   
           }
 
-2. Get Products List:
+2. Validate OTP:
 
-   End point = <ServerUrl>/store/products
-
-   Request Type = GET
-
-3. Upload Image:
-
-   End point = <ServerUrl>/files/uploadimage
+   End point = https://nodeotploginapi.onrender.com/users/login
 
    Request Type = POST
 
-   Date : Append image as 'file' and image name as 'name' in FormData
+   Body = 
+   
+          {
+   
+            "email":<Your Mail Id>,
+  
+            "otp":<OTP sent to your Mail Id>
+  
+          }
 
 
 
